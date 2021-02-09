@@ -36,6 +36,7 @@ Field Number:
 5. Local zone description, 00 to +- 13 hours
 6. Local zone minutes description, apply same sign as local hours
 7. Checksum
+Example: $GPZDA,183300,31,12,2018,-02,00*64
 */
 const debug = require('debug')('signalk-parser-nmea0183/ZDA')
 const utils = require('@signalk/nmea0183-utilities')
@@ -73,6 +74,8 @@ module.exports = function (input) {
     const milliSecond = (parts[0].substring(4) % second)*1000
     const d = new Date(Date.UTC(year, month, day, hour, minute, second, milliSecond ))
     const ts = d.toISOString();
+    const timezoneOffsetHH = parts[4];
+    const timezoneOffsetMM = parts[5];
     delta = {
       updates: [
         {
@@ -82,6 +85,13 @@ module.exports = function (input) {
             {
               "path": "navigation.datetime",
               "value": ts
+            },
+            {
+              "path": "navigation.timezone.offset",
+              "value": {
+                hh: timezoneOffsetHH,
+                mm: timezoneOffsetMM
+              }
             }
           ]
         }
