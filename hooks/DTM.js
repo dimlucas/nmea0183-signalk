@@ -68,14 +68,17 @@ module.exports = function (input) {
                 timestamp: tags.timestamp,
                 values: [
                     {
-                        localDatumCode,
-                        localDatumSubcode,
-                        ns,
-                        latitudeOffset,
-                        longitudeOffset,
-                        ew,
-                        altitudeOffset,
-                        datumName
+                        path: "dtm",
+                        value: {
+                            localDatumCode,
+                            localDatumSubcode,
+                            ns,
+                            latitudeOffset,
+                            longitudeOffset,
+                            ew,
+                            altitudeOffset,
+                            datumName
+                        }
                     }
                 ]
             }
