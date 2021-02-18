@@ -68,10 +68,6 @@ module.exports = function (input) {
                 timestamp: tags.timestamp,
                 values: [
                     {
-                        "path": "navigation.datetime",
-                        "value": ts
-                    },
-                    {
                         localDatumCode,
                         localDatumSubcode,
                         ns,
