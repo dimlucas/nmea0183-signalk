@@ -5,6 +5,7 @@ module.exports = {
   'DBK': require('./DBK.js'),
   'DBS': require('./DBS.js'),
   'DPT': require('./DPT.js'),
+  'DTM': require("./DTM.js"),
   'DSC': require('./DSC.js'),
   'GGA': require('./GGA.js'),
   'GLL': require('./GLL.js'),
